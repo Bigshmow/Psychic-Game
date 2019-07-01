@@ -15,9 +15,14 @@ document.onkeyup = function(event) {
     var userguess = event.key.toLowerCase();
 
     if (userguess === rletter) {
-        alert("working");
         wins++;
+        document.getElementById("wins").innerHTML = "Wins: " + wins;
         console.log(wins);
+    }
+    else {
+        losses++;
+        document.getElementById("losses").innerHTML = "Losses: " + losses;
+        console.log(losses);
     }
     }
 }
