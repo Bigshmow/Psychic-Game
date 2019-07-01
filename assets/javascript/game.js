@@ -3,6 +3,7 @@ var wins = 1;
 var losses = 0;
 var guesses = 8;
 var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","v"];
+var lastguess = [];
 
 
 function pcthink() {
@@ -12,6 +13,7 @@ function pcthink() {
 function resetloss() {
     losses++;
     guesses = 9;
+    lastguess = [];
 }
     
 
@@ -33,7 +35,8 @@ document.onkeyup = function(event) {
     else {
         document.getElementById("losses").innerHTML = "Losses: " + losses;
         document.getElementById("guessesleft").innerHTML = "Guesses Left: " + guesses;
-        document.getElementById("lastguess").innerHTML = "Your Guesses So Far: " + userguess;
+        lastguess.push(userguess);
+        document.getElementById("lastguess").innerHTML = "Your Guesses So Far: " + lastguess;
         console.log("the losses" + losses);
         console.log("the guesses" + guesses);
         if (guesses < 2) {
@@ -51,5 +54,6 @@ document.onkeyup = function(event) {
 pcthink();
 console.log(letters);
 console.log(wins);
+console.log(lastguess);
 
 
