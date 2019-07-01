@@ -14,7 +14,8 @@
             // user will guess a letter by pressing a key
                 // pc checks letter
                     // if the letter is correct - user wins
-                    // if the letter is incorrect - user guesses decrease by 1
+                        //pc thinks again
+                    // else - user guesses decrease by 1 and losses increase by 1
                         //if user guess = 0 - game over 
                 //user guesses again
             -->
@@ -23,10 +24,10 @@
         <H2>Guess what letter I'm thinking of...</H2>
         <br>
         <div class="gamebox">
-            <p id="wins">Wins: </p>
-            <p id="losses">Losses: </p>
-            <p>Guesses Left: </p>
-            <p>Your Guesses So Far: </p>
+            <p id="wins">Wins: 0</p>
+            <p id="losses">Losses: 0</p>
+            <p id="guessesleft">Guesses Left: 9</p>
+            <p id="lastguess">Your Guesses So Far: </p>
             <p id="pcguess"></p>
         </div>
         <script src="../Psychic-Game/assets/javascript/game.js"></script>
