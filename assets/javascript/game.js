@@ -1,8 +1,17 @@
-// user starts with 9 guesses, 0 wins, 0 losses
-// pc will 'think' of a random letter
-    // the letter becomes stored
-// user will guess a letter
-// pc checks letter
-    // if the letter is correct - user wins
-    // if the letter is incorrect - user guesses decrease by 1
-//if user guess = 0 - game over
+// alert("js link worked!!");
+var wins = 0;
+var losses = 0;
+var guesses = 9;
+var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","v"];
+
+function pcthink() {
+    var rnum = Math.floor(Math.random() * letters.length);
+    var rletter = letters[rnum];
+    document.getElementById("pcguess").innerHTML = rletter;
+    }
+
+pcthink();
+console.log(letters);
+document.getElementById("pcguess").innerHTML = rletter;
+
+
