@@ -44,6 +44,7 @@ document.onkeyup = function(event) {
         if (guesses === 0) {
             resetloss();
             pcthink();
+            alert("You lose! The correct letter was " + rletter)
         }
     }
     }
