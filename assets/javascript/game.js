@@ -1,5 +1,5 @@
 // alert("js link worked!!");
-var wins = 1;
+var wins = 0;
 var losses = 0;
 var guesses = 9;
 var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","v"];
@@ -11,46 +11,39 @@ function pcthink() {
     var rletter = letters[rnum];
     console.log(rletter);
 function resetloss() {
-    guesses = 8;
+    losses++;
+    guesses = 9;
     lastguess = [];
     document.getElementById("lastguess").innerHTML = "Your Guesses So Far: ";
+    document.getElementById("guessesleft").innerHTML = "Guesses Left: " + guesses;
+    document.getElementById("losses").innerHTML = "Losses: " + losses;
+}
+function resetwin() {
+    guesses = 9;
+    lastguess = [];
+    document.getElementById("lastguess").innerHTML = "Your Guesses So Far: ";
+    document.getElementById("guessesleft").innerHTML = "Guesses Left: " + guesses;
 }
 
 document.onkeyup = function(event) {
     var userguess = event.key.toLowerCase();
 
     if (userguess === rletter) {
+        wins++;
         document.getElementById("wins").innerHTML = "Wins: " + wins;
-        console.log("the wins " + wins);
-        document.getElementById("guessesleft").innerHTML = "Guesses Left: " + 9;
+        alert("You Guessed Correctly");
+        document.getElementById("lastguess").innerHTML = "Your Guesses So Far: ";
+        resetwin();
         pcthink();
-        if (guesses === 0) {
-            resetloss();
-            losses++;
-            document.getElementById("guessesleft").innerHTML = "Guesses Left: " + 9;
-        }
-        else {
-            wins++;
-            alert("You Guessed Correctly");
-            document.getElementById("lastguess").innerHTML = "Your Guesses So Far: ";
-            resetloss();
-        }
     }
     else {
-        document.getElementById("losses").innerHTML = "Losses: " + losses;
-        document.getElementById("guessesleft").innerHTML = "Guesses Left: " + guesses;
+        guesses--;
         lastguess.push(userguess);
         document.getElementById("lastguess").innerHTML = "Your Guesses So Far: " + lastguess;
-        console.log("the losses" + losses);
-        console.log("the guesses" + guesses);
+        document.getElementById("guessesleft").innerHTML = "Guesses Left: " + guesses;
         if (guesses === 0) {
             resetloss();
-            losses++;
-            document.getElementById("guessesleft").innerHTML = "Guesses Left: " + 9;
             pcthink();
-        }
-        else {
-            guesses--;
         }
     }
     }
@@ -58,7 +51,5 @@ document.onkeyup = function(event) {
 
 pcthink();
 console.log(letters);
-console.log(wins);
-console.log(lastguess);
 
 
