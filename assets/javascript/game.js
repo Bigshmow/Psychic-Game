@@ -1,7 +1,7 @@
 // alert("js link worked!!");
 var wins = 1;
 var losses = 0;
-var guesses = 8;
+var guesses = 9;
 var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","v"];
 var lastguess = [];
 
@@ -9,13 +9,12 @@ var lastguess = [];
 function pcthink() {
     var rnum = Math.floor(Math.random() * letters.length);
     var rletter = letters[rnum];
-    document.getElementById("pcguess").innerHTML = rletter;
+    console.log(rletter);
 function resetloss() {
-    losses++;
-    guesses = 9;
+    guesses = 8;
     lastguess = [];
+    document.getElementById("lastguess").innerHTML = "Your Guesses So Far: ";
 }
-    
 
 document.onkeyup = function(event) {
     var userguess = event.key.toLowerCase();
@@ -23,13 +22,18 @@ document.onkeyup = function(event) {
     if (userguess === rletter) {
         document.getElementById("wins").innerHTML = "Wins: " + wins;
         console.log("the wins " + wins);
-        if (guesses < 2) {
+        document.getElementById("guessesleft").innerHTML = "Guesses Left: " + 9;
+        pcthink();
+        if (guesses === 0) {
             resetloss();
+            losses++;
+            document.getElementById("guessesleft").innerHTML = "Guesses Left: " + 9;
         }
         else {
             wins++;
             alert("You Guessed Correctly");
-            pcthink();
+            document.getElementById("lastguess").innerHTML = "Your Guesses So Far: ";
+            resetloss();
         }
     }
     else {
@@ -39,17 +43,17 @@ document.onkeyup = function(event) {
         document.getElementById("lastguess").innerHTML = "Your Guesses So Far: " + lastguess;
         console.log("the losses" + losses);
         console.log("the guesses" + guesses);
-        if (guesses < 2) {
+        if (guesses === 0) {
             resetloss();
+            losses++;
+            document.getElementById("guessesleft").innerHTML = "Guesses Left: " + 9;
         }
         else {
             guesses--;
-            pcthink();
         }
     }
     }
 }
-
 
 pcthink();
 console.log(letters);
