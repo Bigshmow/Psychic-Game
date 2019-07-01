@@ -47,6 +47,7 @@ document.onkeyup = function(event) {
             resetloss();
             losses++;
             document.getElementById("guessesleft").innerHTML = "Guesses Left: " + 9;
+            pcthink();
         }
         else {
             guesses--;
